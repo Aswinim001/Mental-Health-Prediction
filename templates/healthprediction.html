@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% block title %}
+MentalHealth - Registration
+{% endblock %}
+{% block body %}
+    <!-- MAKE AN APPOINTMENT -->
+    <section id="appointment" data-stellar-background-ratio="3">
+        <div class="container">
+             <div class="row">
+
+                  <div class="col-md-6 col-sm-6">
+                       <img src="/static/images/about-us-hero-alt.jpg" class="img-responsive" alt="">
+                       {% if messages %}
+                         {% if result == 1 %}
+                            {% for message in messages %}
+                            <div class="alert alert-danger">{{user.name}}{{message}}</div>
+                            {% endfor %}
+                         
+                         <a href="{% url 'doctors' %}"><button class="btn btn-success">Doctors</button></a>
+                         <a href="{% url 'precuations' %}"><button class="btn btn-success">Precuations</button></a>
+                         {% elif result == 0 %}
+                         {% for message in messages %}
+                         <div class="alert alert-success">{{user.name}}{{message}}</div>
+                         {% endfor %}
+                        {% endif %}
+                         {% else %}
+                    Your prediction will display here
+               {% endif %}
+                  </div>
+
+                  <div class="col-md-6 col-sm-6">
+                       <!-- CONTACT FORM HERE -->
+                       <form id="appointment-form" role="form" method="POST" action="#">
+                            {% csrf_token %}
+                            <!-- SECTION TITLE -->
+                            <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                                 <h2>PREDICTION</h2>
+                                 <p>Hello {{user.name}}! Enter your details and predict your health</p>
+                            </div>
+
+                            <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                <div class="col-md-6 col-sm-6">
+                                    <label for="gender">Gender</label>
+                                    <select class="form-control" name="gender">
+                                         <option>Select Gender</option>
+                                         <option value="0">Male</option>
+                                         <option value="1">Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label for="age">Age</label>
+                                    <input type="text" name="age" class="form-control">
+                               </div>
+                                <div class="col-md-6 col-sm-6">
+                                      <label for="occupation">Occupation</label>
+                                      <select class="form-control" name="occupation">
+                                           <option>Select Occupation</option>
+                                           <option value="0">Corporate</option>
+                                           <option value="2">Student</option>
+                                           <option value="3">Housewife</option>
+                                           <option value="4">Business</option>
+                                           <option value="1">Others</option>
+                                      </select>
+                                 </div>
+                                 <div class="col-md-6 col-sm-6">
+                                    <label for="indoordays">Days Indoor</label>
+                                    <select class="form-control" name="indoordays">
+                                         <option>Select Indoor days</option>
+                                         <option value="0">1-14 Days</option>
+                                         <option value="1">15-30 Days</option>
+                                         <option value="2">31-60 Days</option>
+                                         <option value="3">More than 2 months</option>
+                                         <option value="4">Go out Every Day</option>
+                                    </select>
+                               </div>
+                               <div class="col-md-6 col-sm-6">
+                                <label for="stress">Growing  Stress?</label>
+                                <select class="form-control" name="stress">
+                                     <option>Select Stress Level</option>
+                                     <option value="0">No</option>
+                                     <option value="1">May be</option>
+                                     <option value="2">Yes</option>
+                                </select>
+                           </div>
+                           <div class="col-md-6 col-sm-6">
+                            <label for="habits">Changes in habits?</label>
+                            <select class="form-control" name="habits">
+                                 <option>Select Change in habits</option>
+                                 <option value="0">No</option>
+                                 <option value="1">May be</option>
+                                 <option value="2">Yes</option>
+                            </select>
+                       </div>
+                       <div class="col-md-6 col-sm-6">
+                        <label for="mentalhealth">Mental Health History</label>
+                        <select class="form-control" name="mentalhealth">
+                             <option>Mental health history</option>
+                             <option value="0">No</option>
+                             <option value="1">May be</option>
+                             <option value="2">Yes</option>
+                        </select>
+                   </div>
+                   <div class="col-md-6 col-sm-6">
+                    <label for="weight">Weight Change?</label>
+                    <select class="form-control" name="weight">
+                         <option>Weight changes???</option>
+                         <option value="0">No</option>
+                         <option value="1">May be</option>
+                         <option value="2">Yes</option>
+                    </select>
+               </div>
+               <div class="col-md-6 col-sm-6">
+                <label for="moodswing">Mood Swings Level</label>
+                <select class="form-control" name="moodswing">
+                     <option>Mood SWings???</option>
+                     <option value="0">Low</option>
+                     <option value="1">Medium</option>
+                     <option value="2">High</option>
+                </select>
+           </div>
+           <div class="col-md-6 col-sm-6">
+            <label for="work">Work Interest</label>
+            <select class="form-control" name="work">
+                 <option>Select option</option>
+                 <option value="0">No</option>
+                 <option value="1">May be</option>
+                 <option value="2">Yes</option>
+            </select>
+       </div>
+       <div class="col-md-6 col-sm-6">
+        <label for="weakness">Social Weakness?</label>
+        <select class="form-control" name="weakness">
+             <option>Select option</option>
+             <option value="0">No</option>
+             <option value="1">May be</option>
+             <option value="2">Yes</option>
+        </select>
+   </div>
+
+
+                                 <div class="col-md-12 col-sm-12">
+                                      <button type="submit" class="form-control" id="cf-submit" name="submit">Predict</button>
+                                 </div>
+                            </div>
+                            
+                      </form>
+                  </div>
+             </div>
+        </div>
+   </section>
+{% endblock %}

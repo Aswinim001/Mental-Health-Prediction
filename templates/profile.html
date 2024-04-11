@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+MentalHealth - Profile
+{% endblock %}
+{% block body %}    
+     <!-- NEWS DETAIL -->
+     <section id="news-detail" data-stellar-background-ratio="0.5">
+        <div class="container">
+             <div class="row">
+
+                  <div class="col-md-6 col-sm-7">
+                       <!-- NEWS THUMB -->
+                       <div class="news-detail-thumb">
+                            <div class="news-image" style="height: 400px;width: 400px;">
+                                 <img src="/static/images/istockphoto-1495088043-612x612-removebg-preview.png" class="img-responsive" alt="">
+                            </div>
+                       </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-5">
+                       <div class="news-sidebar">
+                            <div class="news-author">
+                                 <h4>My Profile</h4>
+                                 <p>My Name           :{{user.name}}<br>
+                                    My EmailID        :{{user.email}}<br>
+                                    My Password       :{{user.createpassword}}<br>
+                                    My Phone Number   :{{user.Phonenumber}}<br>
+                                    My Age            :{{user.age}}<br>
+                                    My Gender         :{{user.gender}}<br>
+                                    My Place          :{{user.place}}</p>
+
+                            </div>
+                            <div class="news-tags">
+                                 <h4></h4>
+                                      <li><a href="updateprofile/{{user.id}}">UPDATE PROFILE</a></li>
+                                      <li><a href="{% url 'paymenthistory' %}">Payment History</a></li>
+                                      
+                            </div>
+                       </div>
+                  </div>
+                  
+             </div>
+        </div>
+   </section>
+   {% endblock %}
